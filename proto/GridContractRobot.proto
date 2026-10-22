@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "GridContractRobotProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+message GridContractRobot {
+  int32 robotId = 1; // 机器人id
+  string symbol = 2; // 机器人交易对
+  int32 side = 3; // 策略类型：1-做多, 2-做空, 3-中性
+  string priceRangeMin = 4; //价格范围最小值
+  string priceRangeMax = 5; // 价格范围最大值
+  int32 gridQuantity = 6; // 网格数量
+  int32 leverage = 7; // 杠杆倍数
+  string initialInvestment = 8; // 初始投资额（USDT）
+  optional string stopTopPrice = 9; // 上行停止价格
+  optional string stopBottomPrice = 10; // 下行停止价格
+  int32 state = 11; // 状态： 2-等待启动, 3-执行中 4、停止中 5、已停止
+  int64 startTime = 12; // 启动时间
+  int64 createTime = 13; // 创建时间
+  int64 stopTime = 14; // 停止时间
+  optional int32 matchedTrades = 15; // 套利次数
+  string totalInvestment = 16; // 总投资额
+  optional string totalProfit = 17; // 总盈亏（USDT）
+  int32 gridMode = 18; // 价差类型：1、等差 2、等比
+  int32 stopCase = 19; // 停止原因：0-其他 1-手动终止, 2-爆仓终止, 3-触发StopPrice停止
+  optional string startPrice = 20; // 启动价格
+  string matchedProfit = 21; // 已配对收益
+  string unmatchedPnL = 22; // 未配对收益
+  optional string totalWithdraw = 23;
+  optional string totalFee = 24; // 总手续费
+  optional string totalFundingFee = 25; // 总资金费
+  string equity = 26; // 当前策略账户权益
+  string availableBalance = 27;
+  string cashBalance = 28;
+  optional string takeProfitAmount = 29;// 止盈金额
+  optional string stopLossAmount = 30;// 止损金额
+  string robotTpStopType = 31;// 止盈类型
+  string robotSlStopType = 32;// 止损类型
+  optional bool insufficientBalance = 33; //是否余额不足
+  optional int32 isAiCreate = 34; //是否ai推荐 0否 1是 默认 0
+  optional int64 activityId = 35; //活动id
+  optional int32 combineStopParam = 36;//
+  optional int32 pauseType = 37;
+  optional int64 resumeTime = 38;
+}

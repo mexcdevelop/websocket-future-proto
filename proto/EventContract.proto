@@ -1,0 +1,99 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "EventContractProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+import "CycleConfigList.proto";
+
+message EventContract {
+
+  /**
+   * 合约id
+   */
+  int32 contractId = 1;
+
+  /**
+   * 合约名称
+   */
+  string symbol = 2;
+
+  /**
+   * 标的货币
+   */
+  string baseCoin = 3;
+
+  /**
+   * 标价货币
+   */
+  string quoteCoin = 4;
+
+  /**
+   * 标的货币名称
+   */
+  string baseCoinName = 5;
+
+  /**
+   * 标价货币名称
+   */
+  string quoteCoinName = 6;
+
+  /**
+   * 结算货币
+   */
+  string settleCoin = 7;
+
+  /**
+   * 标的货币图标配置
+   */
+  string baseCoinIconUrl = 8;
+
+  /**
+   * 最小投入金额
+   */
+  string investMinAmount = 9;
+
+  /**
+   * 最大投入金额
+   */
+  string investMaxAmount = 10;
+
+  /**
+   * 序号
+   */
+  int32 sort = 11;
+
+  /**
+   * 配置信息
+   */
+  map<string, CycleConfigList> cycleConfigMap = 12;
+
+  /**
+   * 状态；PAUSE：暂停；OFFLINE：下线；ONLINE：上线
+   */
+  string state = 13;
+
+  /**
+     * 下单数量精度；
+     */
+  int32 amountScale = 14;
+
+  /**
+   * 支付率精度；
+   */
+  int32 payRateScale = 15;
+
+  /**
+   * 指数价格精度；
+   */
+  int32 indexPriceScale = 16;
+  /**
+   * 可用精度精度;WS用
+   */
+  int32 availableScale = 17;
+  /**
+   * 类型；1：普通；2：停盘
+  */
+  optional int32 type = 18;
+}

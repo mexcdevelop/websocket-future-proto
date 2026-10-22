@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "ChaseLimitOrderNotifyProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+message ChaseLimitOrderNotify {
+  string symbol = 1;
+  /**
+   * 1-开多 2-平空 3-开空 4-平多
+   */
+  int32 side = 2;
+  /**
+   * 通知类型 1-新建 2-主动撤销 3-追逐失败
+   */
+  optional int32 notifyType = 3;
+  /**
+   * 失败原因 1-超距离 2-强平限制
+   */
+  optional int32 errorCode = 4;
+  /**
+   * 订单ID
+   */
+  optional int64 orderId = 5;
+}

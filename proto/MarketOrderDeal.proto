@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "MarketOrderDealProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+import "QuotationEnums.proto";
+
+message MarketOrderDeal {
+  int64 id = 1;
+  string s = 2; // symbol 交易对
+  int64 uid = 3; // uid 用户id
+  int64 oid = 4; // orderId 订单id 默认-1
+  int64 pid = 5; // positionId 仓位id 默认-1
+  int64 ouid = 6; // opponentUid 对手方uid 默认-1
+  int64 ooid = 7; // opponentOrderId 对手方订单id 默认-1
+  OrderSide os = 8; // 方向 注意：之前json格式，这个key是大写S。pb key 不能大小写混用，所以改名了
+  string p = 9; // price 价格
+  string v = 10; // vol 数量
+  string fc = 11; // feeCurrency 手续费币种
+  string f = 12; // fee 手续费
+  string pf = 13; // profit 盈利 注意：之前json格式，这个key是大写P。pb key 不能大小写混用，所以改名了
+  bool it = 14; // isTaker 是否是taker
+  bool m = 15; // isSelf 是否自成交
+  int64 t = 16; // createTime 创建时间
+  PositionMode pm = 17; // positionMode 仓位模式
+}

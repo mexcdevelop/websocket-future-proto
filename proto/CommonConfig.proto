@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "CommonConfigProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+message CommonConfig {
+  map<string,string> config = 1;
+}

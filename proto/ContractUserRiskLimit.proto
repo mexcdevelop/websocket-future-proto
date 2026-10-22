@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "ContractUserRiskLimitProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+message ContractUserRiskLimit {
+  optional int32 level = 1; //当前风险等级
+  optional string maxVol = 2; //最大可持仓数量
+  optional string mmr = 3; // 维持保证金率
+  optional string imr = 4; // 初始保证金率
+  optional int32 maxLeverage = 5; // 最大杠杆倍数 默认-1
+  string symbol = 6;
+  int32 positionType = 7;// 参考 QuotationEnums.proto PositionType
+  int32 riskSource = 8;
+  optional int32 leverage = 9; //当前杠杆倍数 默认-1
+  int32 openType = 10; //保证金模式,默认逐仓 参考 QuotationEnums.proto PositionType
+  optional bool limitBySys = 11; // 限额标识
+  optional string maxVolView = 12; // 用于前端滑动杠杆计算最大风险限额，不依赖杠杆倍数
+}

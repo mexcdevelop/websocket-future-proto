@@ -1,0 +1,25 @@
+syntax = "proto3";
+import "QuotationEnums.proto";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "WsKLineProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+message WsKLine {
+  string symbol = 1; // 交易对
+  Interval interval = 2; // K线周期
+  int64 t = 3; // 交易时间，单位：秒（s），为窗口的开始时间（windowStart）
+
+  // Using string to represent BigDecimal values to preserve precision
+  string o = 4; // 开盘价，openPrice
+  string c = 5; // 收盘价，closePrice
+  string h = 6; // 最高价，highestPrice
+  string l = 7; // 最低价，lowestPrice
+  string a = 8; // 总成交金额，totalAmount
+  string q = 9; // 总成交量，totalQuantity
+  optional string ro = 10; // 真实开盘价
+  optional string rc = 11; // 真实收盘价
+  optional string rh = 12; // 真实最高价
+  optional string rl = 13; // 真实最低价
+}

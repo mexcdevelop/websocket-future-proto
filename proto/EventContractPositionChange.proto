@@ -1,0 +1,78 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "EventContractPositionChangeProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+message EventContractPositionChange {
+
+  /**
+   * 仓位id
+   */
+  int64 positionId = 1;
+
+  /**
+   * 合约id
+   */
+  string symbol = 2;
+
+  /**
+   * 方向
+   */
+  string side = 3;
+
+  /**
+   * 奖金支付率
+   */
+  string payRate = 4;
+
+  /**
+   * 下单金额
+   */
+  string amount = 5;
+
+  /**
+   * 开仓价格
+   */
+  string openPrice = 6;
+
+  /**
+   * 平仓价格
+   */
+  string closePrice = 7;
+
+  /**
+   * 奖励金额 结算时使用(赢 输 平)
+   */
+  string rewardAmount = 8;
+
+  /**
+   * 奖励金额折U 结算时使用(赢 输 平)
+   */
+  string rewardAmountUsdt = 9;
+
+  /**
+   * 状态
+   */
+  string state = 10;
+
+  /**
+   * 平仓结果
+   */
+  optional string closeResult = 11;
+
+  /**
+   * 创建时间
+   */
+  int64 createTime = 12;
+
+  /**
+   * 平仓时间
+   */
+  int64 closeTime = 13;
+  /**
+   * 总盈亏
+   */
+  string pnlAmount = 14;
+}

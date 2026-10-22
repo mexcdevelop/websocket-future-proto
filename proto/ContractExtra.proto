@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "ContractExtraProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+message ContractExtra {
+  // 资产标识
+  optional string symbol = 1;
+  // 开启"priceProtect"的条件订单的触发阈值,0表示不保护
+  // 由于protobuf不直接支持BigDecimal，可以将triggerProtect定义为字符串
+  // 如果这个字段通常包含非常精确的小数，则这种方法是合理的
+  // 或者，如果您更关注整数和小数部分，您也可以将它们拆分为两个字段
+  string triggerProtect = 2;
+  // 考核标识 1开启0关闭
+  int32 appraisal = 3;
+  // 显示考核倒计时标识 1开启0关闭
+  int32 showAppraisalCountdown = 4;
+  // 考核结束时间
+  optional int64 appraisalEndTime = 5;
+  // 自动交割标识 1开启0关闭
+  int32 automaticDelivery = 6;
+  // 交割时间
+  optional int64 deliveryTime = 7;
+  // 交割价类型 2:合理价，3:指数价
+  optional int32 deliveryPriceTrend = 8;
+  //币对类型，1普通，2停盘类。默认是1普通类
+  optional int32 type = 9;
+  //止盈止损仅允许合理价触发true是false不是默认false
+  bool stopOnlyFair = 10;
+  //盘前交易标识
+  optional bool preMarket = 11;
+  //停盘类-类型标签 0-无 1-TradFi 2-股票
+  optional int32 typeLabel = 12;
+  optional string riskLimitRate = 13;//风险限额比例字段
+}

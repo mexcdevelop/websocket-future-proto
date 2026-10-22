@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "ContractFeeRateProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+message ContractFeeRate {
+  optional int32 minLeverage = 1;
+  optional int32 maxLeverage = 2;
+  string takerFeeRate = 3;
+  string makerFeeRate = 4;
+  optional string minTieredDealAmount = 5;
+  optional string maxTieredDealAmount = 6;
+}

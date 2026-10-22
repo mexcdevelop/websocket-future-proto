@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "TickIncrementProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+// 按字段增量推送的ticker信息
+message TickIncrement {
+  string symbol = 1;
+  optional string lp = 2;  // 最新价
+  optional string rfr = 3;  // 涨跌幅
+  optional string fp = 4;  // 合理价格
+  optional string ip = 5;  // 指数价格
+  optional string v24 = 6;  // 24小时成交量
+  optional string a24 = 7;  // 24小时成交额，按金额统计
+  optional string maxB = 8;  // 最大买入价格
+  optional string minA = 9;  // 最低卖出价格
+  optional string lp24 = 10;  // 最低卖出价格
+  optional string hp24 = 11;  // 24小时内最高价
+  int64 ts = 12;  // 系统时间戳
+  int32 cid = 13; // 合约币对id
+}

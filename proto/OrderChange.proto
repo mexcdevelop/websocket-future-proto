@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "OrderChangeProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+message OrderChange {
+  string orderId = 1;
+  optional int64 positionId = 2;
+  int32 openType = 3;
+  int32 side = 4;
+  optional string price = 5;
+  string vol = 6;
+  string remainVol = 7;
+  optional string dealAvgPrice = 8;
+  string dealVol = 9;
+  int32 state = 10;
+  optional int64 version = 11;
+  int32 category = 12;//订单类别:1限价委托,2强平代管委托,3代管平仓委托,4ADL减仓
+  int64 orderType = 13;//1:限价单,2:Post Only只做Maker,3:立即成交或立即取消,4:全部成交或者全部取消|
+  string symbol = 14;//合约名
+  optional string orderMargin = 15;//委托保证金
+  optional string takerFee = 16;//买单手续费
+  optional string makerFee = 17;//卖单手续费
+  optional string profit = 18;//平仓盈亏
+  string feeCurrency = 19;//手续费币种
+  optional string usedMargin = 20;
+  optional int32 leverage = 21;//杠杆倍数
+  int64 errorCode = 22;
+  optional string externalOid = 23;//外部订单号
+  optional int32 marketOrderLevel = 24;
+  int32 positionMode = 25;
+  optional bool reduceOnly = 26;
+  optional int64 createTime = 27;
+  optional int64 updateTime = 28;
+  int32 bboTypeNum = 29;// 参考QuotationEnumsProto OrderTypeBbo
+  string makerFeeRate = 30;
+  string takerFeeRate = 31;
+  optional int32 bizSource = 32;
+  optional string sideType = 33;
+  optional string positionType = 34;
+}

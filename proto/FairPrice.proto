@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "FairPriceProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+message FairPrice {
+  string symbol = 1; // The trading symbol
+  string price = 2; // The fair price, using string to preserve decimal precision
+}

@@ -1,0 +1,14 @@
+syntax = "proto3";
+import "DepthItem.proto";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "DepthInfoProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+message DepthInfo {
+  repeated DepthItem asks = 1;
+  repeated DepthItem bids = 2;
+  int64 version = 3;
+  int64 cts = 4;//撮合时间
+}

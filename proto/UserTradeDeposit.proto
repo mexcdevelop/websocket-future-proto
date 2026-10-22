@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "UserTradeDepositProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+message UserTradeDeposit {
+  /**
+     * 任务类型
+     */
+  string tp = 1;
+  /**
+   * 关联任务id
+   */
+  optional int64 rid = 2;
+  /**
+   * 交易金额
+   */
+  string tamt = 3;
+  /**
+   * 充值金额
+   */
+  string damt = 4;
+  /**
+   * 状态
+   */
+  string st = 5;
+  /**
+   * 当前时间戳
+   */
+  int64 ts = 6;
+  /**
+   * 盈利次数：盈利次数 profitCount
+   */
+  int32 pc = 7;
+
+  /**
+   * 跟单交易：跟单人数 copyUserFollow
+   */
+  int32 cuf = 8;
+
+  /**
+   * 跟单交易：跟单投入总额 copyFollowerChangeFunds
+   */
+  string cfcf = 9;
+
+  /**
+   * 跟单交易：跟单交易总额 copyFollowerDealAmount
+   */
+  string cfda = 10;
+}
+

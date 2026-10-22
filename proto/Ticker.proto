@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "TickerProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+message Ticker {
+  string symbol = 1;
+  string lastPrice = 2;  // 最新价
+  string riseFallRate = 3;  // 涨跌幅
+  string fairPrice = 4;  // 合理价格
+  string indexPrice = 5;  // 指数价格
+  string volume24 = 6;  // 24小时成交量
+  string amount24 = 7;  // 24小时成交额，按金额统计
+  string maxBidPrice = 8;  // 最大买入价格
+  string minAskPrice = 9;  // 最低卖出价格
+  string lower24Price = 10;  // 24小时内最低价
+  string high24Price = 11;  // 24小时内最高价
+  int64 timestamp = 12;  // 系统时间戳
+}

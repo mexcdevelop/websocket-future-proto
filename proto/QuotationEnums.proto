@@ -1,0 +1,171 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "QuotationEnumsProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+enum NotifyType {
+  NOTIFY_TYPE_UNKNOWN = 0; // 默认值
+  NOTIFY_TYPE_LIQUIDATE = 1; // 强平通知
+}
+
+enum Interval {
+  UNKNOWN = 0; // Placeholder for unknown values
+  Second1 = 1; // 1000L
+  Min1 = 2; // 60000L
+  Min5 = 3; // 300000L
+  Min15 = 4; // 900000L
+  Min30 = 5; // 1800000L
+  Min60 = 6; // 3600000L
+  Hour4 = 7; // 14400000L
+  Hour8 = 8; // 28800000L
+  Day1 = 9; // 86400000L
+  Week1 = 10; // 604800000L
+  Month1 = 11; // 2592000000L (Please note this might exceed int32 limit)
+}
+
+enum Origin {
+  ORIGIN_UNKNOWN = 0; // 占位
+  APP = 1;
+  WEB = 2;
+  OPENAPI = 3;
+  WATCH = 4;
+}
+
+enum OrderSide {
+  ORDER_SIDE_UNKNOWN = 0; // 默认值
+  BID_OPEN_LONG = 1; //开多
+  BID_CLOSE_SHORT = 2; // 平空
+  ASK_OPEN_SHORT = 3; // 开空
+  ASK_CLOSE_LONG = 4; // 平多
+}
+
+enum OrderCategory {
+  ORDER_CATEGORY_UNKNOWN = 0; // 占位
+  LIMIT = 1; // 限价委托
+  DELEGATE = 2; // 强平代管委托
+  LIQUIDATE = 3; // 代管平仓委托
+  ADL = 4; // ADL减仓
+  DELIVERY = 5; // 交割订单
+  LIQUIDATE_HEDGE = 6; // 强平对冲
+}
+
+enum PositionMode {
+  POSITION_MODE_UNKNOWN = 0; // 默认值
+  HEDGE_MODE = 1; // 双向
+  ONE_WAY_MODE = 2; // 单向
+}
+
+//enum BooleanEnum {
+//  BOOLEAN_UNKNOWN = 0; // 未知
+//  BOOLEAN_TRUE = 1;
+//  BOOLEAN_FALSE = 2;
+//}
+
+enum TriggerType {
+  TRIGGER_TYPE_UNKNOWN = 0; // 未知
+  TRIGGER_TYPE_GE = 1; // 大于等于
+  TRIGGER_TYPE_LE = 2; // 小于等于
+}
+
+enum PositionOpenType {
+  POSITION_OPEN_TYPE_UNKNOWN = 0; // 未知
+  POSITION_OPEN_TYPE_ISOLATED = 1; // 逐仓
+  POSITION_OPEN_TYPE_CROSS_MARGIN = 2; // 全仓
+  POSITION_OPEN_TYPE_ALL = 3; // 全仓和逐仓
+}
+
+enum Trend {
+  TREND_TYPE_UNKNOWN = 0; // 未知
+  TREND_TYPE_LATEST_PRICE = 1; // 最新价
+  TREND_TYPE_FAIR_PRICE = 2; // 合理价
+  TREND_TYPE_INDEX_PRICE = 3; // 指数价
+
+}
+
+enum OrderType {
+  ORDER_TYPE_UNKNOWN = 0; // 未知
+  ORDER_TYPE_LIMIT = 1; // 普通限价
+  ORDER_TYPE_POST_ONLY = 2; // 只做maker
+  ORDER_TYPE_IMMEDIATE_OR_CANCEL = 3; // 立即成交或撤销
+  ORDER_TYPE_FILL_OR_KILL = 4; // 全部成交或撤销
+  ORDER_TYPE_MARKET = 5; // 市价单
+  ORDER_TYPE_MARKET_LIMIT = 6; // 市价转限价
+}
+
+enum TriggerOrderState {
+  TRIGGER_ORDER_STATE_UNKNOWN = 0; // 未知
+  TRIGGER_ORDER_STATE_NEW = 1; // 未触发
+  TRIGGER_ORDER_STATE_CANCELED = 2; // 已取消
+  TRIGGER_ORDER_STATE_EXECUTED = 3; // 已执行
+  TRIGGER_ORDER_STATE_EXPIRE = 4; // 已失效
+  TRIGGER_ORDER_STATE_FAILED = 5; // 执行失败
+}
+
+enum PositionState {
+  POSITION_STATE_UNKNOWN = 0; // 未知
+  POSITION_STATE_HOLDING = 1; // 持仓中
+  POSITION_STATE_DELEGATE = 2; // 系统代持
+  POSITION_STATE_CLOSED = 3; // 已平仓
+}
+
+enum PositionType {
+  POSITION_TYPE_UNKNOWN = 0; // 未知
+  POSITION_TYPE_LONG = 1; // 多
+  POSITION_TYPE_SHORT = 2; // 空
+}
+
+enum RiskLimitType {
+  RISKLIMIT_TYPE_UNKNOWN = 0; // 未知
+  BY_VOLUME = 1;
+  BY_VALUE = 2;
+}
+
+enum TriggerSide {
+  TRIGGER_SIDE_UNKNOWN = 0; // 未知
+  TRIGGER_SIDE_STOP_LOSS = 1; // 止损
+  TRIGGER_SIDE_TAKE_PROFIT = 2; // 止盈
+}
+
+enum StopPlanOrderVolType {
+  VOL_TYPE_UNKNOWN = 0; // 未知
+  VOL_TYPE_IN_BATCHES = 1; // 分批
+  VOL_TYPE_ALL_POSITION = 2; // 全仓位
+}
+
+//止盈止损订单反手类型
+enum StopPlanOrderReverseType {
+  REVERSE_TYPE_UNKNOWN = 0; // 未知
+  REVERSE_TYPE_YES = 1; // 是
+  REVERSE_TYPE_NO = 2; // 否
+}
+
+// 价格回调类型
+enum BackType {
+  BACK_TYPE_UNKNOWN = 0; // 未知
+  BACK_TYPE_RATE = 1; // 回调百分比
+  BACK_TYPE_VALUE = 2; // 回调幅度值
+}
+
+enum TrackOrderState {
+  TRACK_ORDER_STATE_INIT = 0; // 未激活
+  TRACK_ORDER_STATE_ACTIVE = 1; // 已激活
+  TRACK_ORDER_STATE_SUCCESS = 2; // 触发成功
+  TRACK_ORDER_STATE_FAIL = 3; // 触发失败
+  TRACK_ORDER_STATE_CANCEL = 4; // 已取消
+}
+
+enum OrderTypeBbo {
+    ORDER_TYPE_BBO_UNKNOWN = 0;
+    ORDER_TYPE_BBOR1 = 1;
+    ORDER_TYPE_BBOR5 = 2;
+    ORDER_TYPE_BBOS1 = 3;
+    ORDER_TYPE_BBOS5 = 4;
+}
+
+enum RiskLimitMode {
+  RISK_LIMIT_MODE_UNKNOWN = 0;
+    INCREASE = 1;
+    CUSTOM = 2;
+}

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "OrderChaseProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+message OrderChase {
+  int32 ec = 1; //error code
+  string s = 2; // symbol
+}

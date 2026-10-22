@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "TickerDetailProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+message TickerDetail {
+  // 继承自 Ticker 的字段
+  string symbol = 1;
+  string lastPrice = 2;
+  string riseFallRate = 3;
+  string fairPrice = 4;
+  string indexPrice = 5;
+  string volume24 = 6;
+  string amount24 = 7;
+  string maxBidPrice = 8;
+  string minAskPrice = 9;
+  string lower24Price = 10;
+  string high24Price = 11;
+  int64 timestamp = 12;
+
+  // TickerDetail 特有的字段
+  string bid1 = 13; // 买一价
+  string ask1 = 14; // 卖一价
+  string holdVol = 15; // 总持仓量
+  string riseFallValue = 16; // 涨跌额
+  string fundingRate = 17; // 资金费率
+  string zone = 18; // 时区
+  repeated string riseFallRates = 19; // 时区涨跌幅
+  repeated string riseFallRatesOfTimezone = 20; // 涨跌幅数组，包含 rate24h, rateUtc0, rateUtc8
+}

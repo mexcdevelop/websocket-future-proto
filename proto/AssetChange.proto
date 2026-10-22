@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "AssetChangeProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+message AssetChange {
+  optional string currency = 1;
+  optional string availableBalance = 2;
+  optional string frozenBalance = 3;
+  optional string positionMargin = 4;
+  optional string bonus = 5;
+}

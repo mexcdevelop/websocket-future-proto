@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "DealProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+
+message Deal {
+  // The price of the deal.
+  optional string p = 1;
+
+  // The volume of the deal.
+  optional string v = 2;
+
+  // 买入方向
+  optional int32 t = 3;
+
+  // 1 新增仓位
+  // 2 减少仓位
+  // 3 不变
+  optional int32 o = 4;
+
+  // Indicates if the deal was made with oneself.
+  optional int32 m = 5;
+
+  // The timestamp of when the deal was made.
+  optional int64 ts = 6;// 之前是t，跟'买入方向'重名了，需要改名字
+
+  optional int64 i = 7;
+
+  int64 cts = 8; //撮合时间
+}
+
+message Deals {
+  repeated Deal deals = 1;
+}

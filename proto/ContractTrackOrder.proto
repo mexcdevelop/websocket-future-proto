@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "ContractTrackOrderProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+message ContractTrackOrder {
+  string id = 1; // 主键id
+  string symbol = 2; // 合约Id
+  optional int32 leverage = 3; // 杠杆倍数
+  int32 side = 4; // 订单方向（1 开多 2平空 3开空 4平多）参考QuotationEnums.proto OrderSide
+  optional string vol = 5; // 委托数量
+  optional int32 openType = 6; // 持仓类型（1 逐仓 2 全仓）参考QuotationEnums.proto PositionOpenType
+  int32 trend = 7; // 参考价格（1 最新价 2合理价 3 指数价） 参考QuotationEnums.proto Trend
+  optional string activePrice = 8; // 激活价格
+  optional string markPrice = 9; // 对标价格（激活后的最高价或者最低价）
+  int32 backType = 10; // 价格回调类型（1回调百分比 2回调跨度值）参考QuotationEnums.proto BackType
+  optional string backValue = 11; // 回调值
+  optional string triggerPrice = 12; // 触发价格（随对标价格更新而更新）
+  int32 triggerType = 13; // 触发类型 参考QuotationEnums.proto TriggerType
+  optional int64 orderId = 14; // 触发成功后的委托单id
+  optional int32 errorCode = 15; // 触发失败的错误码
+  int32 state = 16; // 当前跟踪委托单状态（0未激活 1 已激活 2 执行成功 3 执行失败 4 已取消）参考QuotationEnums.proto TrackOrderState
+  optional int64 createTime = 17; // 创建时间
+  optional int64 updateTime = 18; // 更新时间
+  optional int32 positionMode = 19; // 用户设置持仓类型 默认0：历史订单无记录 2：单向 1：双向 参考QuotationEnums.proto PositionMode
+  bool reduceOnly = 20; // 只减仓
+}
