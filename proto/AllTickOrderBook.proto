@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "AllTickOrderBookProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+import "ExternalDepth.proto";
+
+message AllTickOrderBook {
+  string s = 1;// symbol
+  int64 q = 2;// The sequence number
+  int64 t = 3;// The SIP timestamp in Unix MS.
+  repeated ExternalDepth asks = 4;// The asks
+  repeated ExternalDepth bids = 5;// The bids
+}

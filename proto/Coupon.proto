@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "CouponProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+message Coupon {
+  string couponId = 1;
+  string couponInnerName = 2;
+  string bizType = 3;
+  string couponType = 4;
+  string state = 5;
+  optional string awardType = 6;
+  optional string couponAmount = 7; // 使用 double 表示金额（或使用 int64 + 单位）
+  optional string settleAmount = 8;
+  optional string currency = 9;
+  optional int64 grantTime = 10;
+  optional int64 beginTime = 11;
+  optional int64 settleTime = 12;
+  optional int64 expireTime = 13;
+  optional int32 kycLevel = 14;
+  optional string orderId = 15;
+  optional string positionId = 16;
+}

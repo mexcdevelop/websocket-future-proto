@@ -1,0 +1,44 @@
+syntax = "proto3";
+import "PositionDeductFee.proto";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "PositionChangeProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+message PositionChange {
+  int64 positionId = 1;
+  string symbol = 2; //合约名
+  int32 state = 3; // 仓位状态 参考 QuotationEnums.proto PositionState
+  optional string holdVol = 4; // 持仓量
+  optional string frozenVol = 5; // 冻结量
+  optional string closeVol = 6; // 平仓量
+  optional string holdAvgPrice = 7; // 持仓均价 持仓均价和开仓均价目前是一样的， 如果后面存在交割合约再考虑两者的区别
+  optional string holdAvgPriceFullyScale = 8; // 全精度持仓均价
+  optional string openAvgPrice = 9; // 开仓均价
+  optional string openAvgPriceFullyScale = 10; // 全精度开仓均价
+  optional string closeAvgPrice = 11; // 平仓均价
+  optional string liquidatePrice = 12; // 逐仓时的爆仓价
+  optional string oim = 13; // 原始初始保证金
+  optional string im = 14; // 初始保证金， 逐仓时可以加减此项以调节爆仓价
+  optional string mm = 15; // 维持保证金
+  optional string holdFee = 16; // 资金费, 正数表示得到，负数表示支出
+  optional string realised = 17; // 已实现盈亏
+  optional int32 adlLevel = 18; //自动减仓等级
+  int32 positionType = 19;//仓位类型， 1多 2空 参考 QuotationEnums.proto PositionType
+  int32 openType = 20;//开仓类型， 1逐仓 2全仓 参考 QuotationEnums.proto PositionOpenType
+  optional int32 leverage = 21; // 起始杠杆倍数
+  optional bool autoAddIm = 22; // 是否支持自动追加保证金。需要判断hasAutoAddIm
+  string pnl = 23; // 浮动盈亏
+  optional string marginRatio = 24; // 保证金比率
+  optional int64 createTime = 25;
+  optional int64 updateTime = 26;
+  optional int64 version = 27; //version
+  optional string newOpenAvgPrice = 28; //开仓均价
+  optional string newCloseAvgPrice = 29; //平仓均价
+  optional string closeProfitLoss = 30; //平仓盈亏
+  optional string fee = 31; //手续费
+  repeated PositionDeductFee deductFeeList = 32; //扣减的手续费
+  string makerFeeRate = 33;
+  string takerFeeRate = 34;
+}

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "MdayRewardProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+message MdayReward {
+  string rewardQuantity = 1; //奖励数量
+  string rewardCurrency = 2; //奖励币种类型
+}

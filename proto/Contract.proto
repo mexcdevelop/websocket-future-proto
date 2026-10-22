@@ -1,0 +1,142 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "ContractProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+import "QuotationEnums.proto";
+import "RiskLimit.proto";
+import "ContractFeeRate.proto";
+
+message Contract {
+  optional string symbol = 1;
+  optional string displayName = 2;
+  optional string displayNameEn = 3;
+  // 开仓模式
+  int32 positionOpenType = 4;
+
+  // 标的货币 如 BTC
+  optional string baseCoin = 5;
+  // 标价货币 如 USDT
+  optional string quoteCoin = 6;
+
+  // 标的货币名称
+  optional string baseCoinName = 7;
+  // 标价货币名称
+  optional string quoteCoinName = 8;
+  // 合约类型
+  optional int32 futureType = 9;
+
+  // 结算货币 如 USDT
+  optional string settleCoin = 10;
+  // 合约面值
+  optional string contractSize = 11; // Represent BigDecimal as string
+
+  // 杠杆倍数上下限
+  optional int32 minLeverage = 12;
+  optional int32 maxLeverage = 13;
+
+  // 价格小数位数
+  optional int32 priceScale = 14;
+  optional int32 volScale = 15;
+  optional int32 amountScale = 16;
+
+  // 价格的最小步进单位，比如BTC 0.5
+  optional string priceUnit = 17; // Represent BigDecimal as string
+  optional string volUnit = 18; // Represent BigDecimal as string
+
+  // 订单张数上下限
+  optional string minVol = 19; // Represent BigDecimal as string
+  optional string maxVol = 20; // Represent BigDecimal as string
+  // 限价订单张数最大值
+  optional string limitMaxVol = 21; // Represent BigDecimal as string
+
+  // 合约下单价格限制
+  optional string bidLimitPriceRate = 22; // Represent BigDecimal as string
+  optional string askLimitPriceRate = 23; // Represent BigDecimal as string
+
+  // 费率
+  optional string takerFeeRate = 24; // Represent BigDecimal as string
+  optional string makerFeeRate = 25; // Represent BigDecimal as string
+
+  // 维持保证金率
+  optional string maintenanceMarginRate = 26; // Represent BigDecimal as string
+  // 初始保证金率
+  optional string initialMarginRate = 27; // Represent BigDecimal as string
+  // 基本张数
+  optional string riskBaseVol = 28; // Represent BigDecimal as string
+  // 递增张数
+  optional string riskIncrVol = 29; // Represent BigDecimal as string
+  // 维持保证金率递增量
+  optional string riskIncrMmr = 30; // Represent BigDecimal as string
+  // 初始保证金率递增量
+  optional string riskIncrImr = 31; // Represent BigDecimal as string
+  // 风险限额档位数
+  optional int32 riskLevelLimit = 32;
+  //合理价格偏离指数价格系数
+  optional string priceCoefficientVariation = 33; // Represent BigDecimal as string
+
+  repeated string indexOrigin = 34; // 指数来源
+  int32 state = 35;
+
+  optional bool isNew = 36;
+  optional bool isHot = 37;
+  optional bool isHidden = 38;
+
+  repeated string conceptPlate = 39;
+
+  optional RiskLimitType riskLimitType = 40;
+
+  // 价差保护阈值
+  optional string triggerProtect = 41; // Represent BigDecimal as string
+
+  // 最大挂单数
+  repeated int32 maxNumOrders = 42;
+
+  // 深度步进单位列表
+  repeated string depthStepList = 43;
+
+  // 多空风险限额是否独立
+  optional int32 riskLongShortSwitch = 44;
+  // 多方向订单基本张数
+  optional string riskBaseVolLong = 45; // Represent BigDecimal as string
+  // 多方向订单递增张数
+  optional string riskIncrVolLong = 46; // Represent BigDecimal as string
+  // 空方向订单基本张数
+  optional string riskBaseVolShort = 47; // Represent BigDecimal as string
+  // 空方向订单递增张数
+  optional string riskIncrVolShort = 48; // Represent BigDecimal as string
+  //开盘时间
+  optional int64 openingTime = 49;
+  //开盘倒计时选项 1-显示开盘时间和倒计时, 2-仅显示开盘时间, 3-不显示开盘时间和倒计时
+  optional int32 openingCountdownOption = 50;
+  //归属板块列表
+  repeated int32 conceptPlateId = 51;//
+  //风险限制模式
+  RiskLimitMode riskLimitMode = 52;
+  //自定义模式-风险限额列表
+  repeated RiskLimit riskLimitCustom = 53;
+  //强平手续费率
+  string liquidationFeeRate = 54;
+  //费率模式 1-普通模式 2-杠杆模式
+  int32 feeRateMode = 55;
+  //杠杆费率
+  repeated ContractFeeRate leverageFeeRates = 56;
+  //阶梯费率
+  repeated ContractFeeRate tieredFeeRates = 57;
+  //交易金额
+  optional string tieredDealAmount = 58;
+  //有效天数
+  optional int32 tieredEffectiveDay = 59;
+  //false:不排除，true:排除；是否排除0费率交易额
+  optional bool tieredExcludeZeroFee = 60;
+  //是否指定合约；false：不指定；true：指定
+  optional bool tieredAppointContract = 61;
+  //false:不包含，true:包含
+  optional bool tieredExcludeContractId = 62;
+  //合约ID号，例[10,11]
+  repeated int32 tieredContractIds = 63;
+  //关联标签ID列表
+  repeated int64 tagIdList = 64;
+}

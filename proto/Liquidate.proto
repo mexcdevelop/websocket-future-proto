@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "LiquidateProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+message Liquidate {
+  int32 notifyType = 1; // 通知类型:1-强平通知, 2-强平预警
+  int32 openType = 2; // 开仓类型:1-逐仓, 2-全仓
+  optional string dn = 3; // displayName
+  optional string dne = 4; // displayNameEn
+  bool multiAssets = 5; //是否开启联保模式
+  optional string marginRate = 6;// 保证金比率
+}

@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "CycleConfigProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+message CycleConfig {
+  /**
+   * 值
+   */
+  int32 val = 1;
+  /**
+   * 上涨赔付率
+   */
+  string upPayRate = 2;
+  /**
+   * 下跌赔付率
+   */
+  string downPayRate = 3;
+}

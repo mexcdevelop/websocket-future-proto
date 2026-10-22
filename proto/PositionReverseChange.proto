@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "PositionReverseChangeProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+message PositionReverseChange {
+  int32 contractId = 1;
+  int64 positionId = 2;
+  int32 state = 3;
+  optional int32 errorCode = 4;
+  map<string, string> extend = 5;
+}

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "ContractBlackWhiteProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+message ContractBlackWhite {
+  string configType = 1; //名单属于的业务类型 CROSS_PNL-滚仓
+  string listType = 2;//名单类型 BLACKLIST-黑名单，WHITELIST-白名单， NONE-都不在
+}

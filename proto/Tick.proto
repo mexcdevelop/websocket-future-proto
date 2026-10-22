@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "TickProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+message Tick {
+  string symbol = 1;
+  string lp = 2;  // 最新价
+  string rfr = 3;  // 涨跌幅
+  string fp = 4;  // 合理价格
+  string ip = 5;  // 指数价格
+  string v24 = 6;  // 24小时成交量
+  string a24 = 7;  // 24小时成交额，按金额统计
+  string maxB = 8;  // 最大买入价格
+  string minA = 9;  // 最低卖出价格
+  string lp24 = 10;  // 最低卖出价格
+  string hp24 = 11;  // 24小时内最高价
+  int64 ts = 12;  // 系统时间戳
+}

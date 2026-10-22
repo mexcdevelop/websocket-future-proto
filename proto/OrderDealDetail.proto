@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "OrderDealDetailProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+message OrderDealDetail {
+  optional string id = 1;
+  string symbol = 2;
+  int32 side = 3; //1开多,2平空,3开空,4平多 参考QuotationEnums.proto OrderSide
+  optional string vol = 4; //数量
+  optional string price = 5; //价格
+  optional string feeCurrency = 6;
+  optional string fee = 7; // 单边产生的手续费， 正数表示用户付出， 负数表示用户获得
+  optional int64 timestamp = 8; //成交时间
+  optional string profit = 9;
+  bool taker = 10;
+  int32 category = 11;
+  string orderId = 12;
+  optional bool isSelf = 13;
+  optional string externalOid = 14; //外部订单号
+  int32 positionMode = 15;
+  optional bool reduceOnly = 16; // 可能为空，需要判断hasReduceOnly的值
+  optional int64 opponentUid = 17;//对手方uid  可能为空，需要判断hasOpponentUid的值
+}

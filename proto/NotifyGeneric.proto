@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "NotifyGenericProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+import "Liquidate.proto";
+
+message NotifyGeneric {
+  int32 type = 1; // 1-强平通知, 默认值-1 参考QuotationEnums.proto NotifyType
+  Liquidate param = 2; // 通知的信息主体
+}

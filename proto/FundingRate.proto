@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "FundingRateProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+message FundingRate {
+  string symbol = 1; // The trading symbol
+  string rate = 2; // The funding rate, using string to preserve decimal precision
+  int64 nextSettleTime = 3; // The next settlement time, represented as a timestamp in seconds
+  int64 fundingType = 4;
+}

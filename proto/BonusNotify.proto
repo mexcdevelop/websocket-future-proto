@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "BonusNotifyProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+message BonusNotify {
+  optional string c = 1; // currency 币种
+  optional string b = 2; // bonus 体验金金额
+  optional int64 be = 3; // bonusExpireTime 体验金过期时间
+  bool g = 4; // grant 是否发放体验金
+  int64 ret = 5; // recentExpireTime 最近一笔到期时间
+  string rea = 6; // recentExpireAmount 最近一笔到期金额
+
+}

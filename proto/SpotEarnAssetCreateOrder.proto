@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "SpotEarnAssetCreateOrderProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+message SpotEarnAssetCreateOrder {
+  string titleCode = 1;// 标题文案code
+  optional string textCode = 2;// 文案code
+  optional string symbol = 3;// 合约名称
+  optional int32 side = 4;// 方向 1:多仓 2:空仓
+  int32 type = 5;// 1:理财现货下单pending 2:理财赎回失败 3:现货划转失败 4.现货划转超时 5. 下单失败 6.下单成功
+}

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "IndexPriceProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+message IndexPrice {
+  string symbol = 1;
+  string price = 2;
+}

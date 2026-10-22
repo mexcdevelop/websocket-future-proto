@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "ContractPlanOrderProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+message ContractPlanOrder {
+  optional string id = 1;
+  string symbol = 2;
+  optional int32 leverage = 3;
+  int32 side = 4; //参考 QuotationEnums.proto OrderSide
+  optional string triggerPrice = 5; //触发价
+  optional string price = 6; //执行价格
+  optional string vol = 7; //等于0时为市价
+  optional int32 openType = 8; //开仓类型 参考 QuotationEnums.proto PositionOpenType
+  int32 triggerType = 9; //触发类型 参考 QuotationEnums.proto TriggerType
+  int32 state = 10; //执行状态 参考 QuotationEnums.proto TriggerOrderState
+  optional int32 executeCycle = 11; //执行周期,单位:小时
+  int32 trend = 12; //价格类型,1:最新价，2:合理价，3:指数价 参考 QuotationEnums.proto Trend
+  int32 orderType = 13;//参考 QuotationEnums.proto OrderType
+  optional string orderId = 14;
+  optional int32 errorCode = 15;
+  optional int32 marketOrderLevel = 16; //市价订单的自定义档位
+  int64 createTime = 17;
+  int64 updateTime = 18;
+  optional int32 positionMode = 19; // 用户设置持仓类型 默认0：历史订单无记录 2：单向 1：双向 QuotationEnums.proto PositionMode
+  optional int32 lossTrend = 20; // 止损参考价格类型 1 最新价 2合理价 3 指数价 参考 QuotationEnums.proto Trend
+  optional int32 profitTrend = 21; // 止盈参考价格类型 1 最新价 2合理价 3 指数价 参考 QuotationEnums.proto Trend
+  optional string stopLossPrice = 22; // 止损价
+  optional string takeProfitPrice = 23; // 止盈价
+  bool reduceOnly = 24; // 只减仓
+  optional int32 ensureStopLoss = 25;//确保止损 0 不开启 1 开启 默认不开启
+  optional string extraTakerFeeRate = 26;// 额外taker费率
+}

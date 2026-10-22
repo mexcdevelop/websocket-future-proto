@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "MarketOrderSettingProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+message MarketOrderSetting {
+  string symbol = 1;
+  optional int32 level = 2;
+  optional int32 maxLevel = 3;
+  // BigDecimal is represented as string to preserve precision.
+  string priceLimitRate1 = 4;
+  string priceLimitRate2 = 5;
+  optional int64 threshold = 6;
+}

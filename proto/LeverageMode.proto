@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "LeverageModeProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+message LeverageMode {
+  optional int32 lm = 1; // leverageMode 简写, 默认值-1
+}

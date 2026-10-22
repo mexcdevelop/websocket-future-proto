@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "GridContractRiskInfoProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+import "RiskLimit.proto";
+
+message GridContractRiskInfo {
+  RiskLimit longRiskInfo = 1; // 多仓
+  RiskLimit shortRiskInfo = 2; // 空仓
+}

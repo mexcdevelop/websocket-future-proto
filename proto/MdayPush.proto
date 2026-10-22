@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "MdayPushProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+import "MdayReward.proto";
+
+message MdayPush {
+  string activityType = 1; //活动类型：OP_MDAY
+  string activityId = 2; //活动id
+  string eventType = 3; //TRADE_UPDATE-交易进度更新
+  optional string futureTradeAmount = 4; //当前完成的交易额度
+  optional int64 nextLevelDrawCount = 5; //下一档位完成，可以获得的宝箱数量
+  optional string nextLevelTotalAmount = 6; //下一档位总交易额
+  optional bool maxDrawCount = 7; //是否获得最高宝箱数
+  repeated MdayReward rewardList = 8; //奖励列表
+}

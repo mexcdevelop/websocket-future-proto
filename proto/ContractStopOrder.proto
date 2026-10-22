@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "ContractStopOrderProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+message ContractStopOrder {
+  string symbol = 1;
+  string orderId = 2;
+  optional int32 lossTrend = 3;//参考 QuotationEnums.proto Trend
+  optional int32 profitTrend = 4;//参考 QuotationEnums.proto Trend
+  optional string stopLossPrice = 5; //止损价
+  optional string takeProfitPrice = 6; //止盈价
+  optional int32 ensureStopLoss = 7;//确保止损 0 不开启 1 开启 默认不开启
+  optional string extraTakerFeeRate = 8;// 额外taker费率
+}

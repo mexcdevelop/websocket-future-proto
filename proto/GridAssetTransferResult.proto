@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "GridAssetTransferResultProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+message GridAssetTransferResult {
+  int32 robotId = 1; // 机器人id
+  int32 status = 2; // 资金状态 1 成功 2 失败
+  int32 type = 3; // 资金类型  1 提取资金 2 累加资金
+  string amount = 4; // 资金数量
+  string currency = 5; // 币种
+}

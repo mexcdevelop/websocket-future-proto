@@ -1,0 +1,11 @@
+syntax = "proto3";
+import "Ticker.proto";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "TickerListProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+message TickerList {
+  repeated Ticker ticker = 1;
+}

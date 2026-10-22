@@ -1,0 +1,91 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "EighthAnniversaryPushProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+message EighthAnniversaryPush {
+  /**
+   * 合约的uid uc返的contractId字段，查询入参needContractId=true
+   */
+  int64 contractUid = 1;
+  /**
+   * 任务列表
+   */
+  repeated EighthAnniversaryTask taskList =2;
+}
+
+message EighthAnniversaryTask {
+  /**
+   * 任务ID
+   */
+  optional int64 taskId = 1;
+  /**
+   * 父任务ID
+   */
+  optional int64 parTaskId = 2;
+  /**
+   * 名称
+   */
+  optional string name = 3;
+  /**
+   * 用户维度,该任务的状态
+   */
+  optional int32 taskState = 4;
+  /**
+   * 奖励列表
+   */
+  repeated EighthAnniversaryProfit profits = 5;
+  /**
+   * 规则列表
+   */
+  repeated EighthAnniversaryRule rules = 6;
+
+  /**
+   * 任务开始时间
+   */
+  optional int64 startTime = 7;
+
+  /**
+   * 任务结束时间
+   */
+  optional int64 endTime = 8;
+}
+
+message EighthAnniversaryProfit {
+  optional EighthAnniversaryProfitConfig singleProfit = 1;
+}
+
+message EighthAnniversaryRule {
+  /**
+   * 目标值
+   * 如果是入金任务则代表充值数额, 如果是交易类型代表交易额, 如果是人人代理, 则代表目标人头数
+   */
+  optional string target = 1;
+  /**
+   * 该规则下, 用户当前的进度
+   */
+  optional string ruleCurrentProgress = 2;
+
+  /**
+   * 入金计算方法【用户入金专属字段, 其它类型为该字段为null】
+   */
+  optional string calculationMethod = 3;
+  /**
+   * 币种Name列表【用户入金专属字段, 其它类型为该字段为空集合】
+   */
+  repeated string currencyNames = 4;
+  /**
+   * 币种ID列表【用户入金专属字段, 其它类型为该字段为空集合】
+   */
+  repeated string currencyIds = 5;
+}
+
+message EighthAnniversaryProfitConfig {
+  repeated EighthAnniversaryProfitConfigDetail detail = 1;
+}
+
+message EighthAnniversaryProfitConfigDetail {
+  optional string num = 1; //发放面值
+}

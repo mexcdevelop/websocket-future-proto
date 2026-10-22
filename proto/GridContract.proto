@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "GridContractProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+import "GirdContractRiskInfo.proto";
+import "ContractFeeRate.proto";
+
+message GridContract {
+  string symbol = 1; // 交易对
+  int32  maxLeverage = 2; // 最大杠杆倍数
+  int32  gridQuantityLimit = 3; // 网格数量上限
+  string  priceBottomPercentage = 4; // 价格下限百分比
+  string  priceTopPercentage = 5; // 价格上限百分比
+  string minProfitSpread = 6; // 最小利润要求点差
+  int32 amountScale = 7; // 金额精度
+  string  baseCoin = 8; // 标的货币
+  string  baseCoinName = 9; // 标的货币名称
+  string  baseCoinIconUrl = 10; // 标的货币url
+  string quoteCoin = 11; // 标价货币
+  string quoteCoinName = 12; // 标价货币名称
+  string settleCoin = 13; // 结算货币
+  int32 state = 14; // 状态
+  bool isReverse = 15; // 是否是反向合约
+  string contractSize = 16; // 合约面值
+  string takerFeeRate = 17; // taker手续费率
+  string  maintenanceMarginRate = 18; // 维持保证金率
+  int32 priceScale = 19; // 价格精度
+  string  minVol = 20; // 最小下单数量
+  string volUnit = 21; // 数量最小步进单位
+  string  priceUnit = 22; // 价格最小步进单位
+  GridContractRiskInfo riskInfo = 23; // 风险限额信息
+  int32 isDelete = 24; //是否删除 0-否 1-是
+  //强平手续费率
+  string liquidationFeeRate = 25;
+  //费率模式 1-普通模式 2-杠杆模式
+  int32 feeRateMode = 26;
+  //杠杆费率
+  repeated ContractFeeRate leverageFeeRates = 27;
+  int32 contractId = 28;
+}

@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+option java_multiple_files = true;
+option java_outer_classname = "ContractStopPlanOrderProto";
+option java_package = "com.mxc.quotation.common.data.vo.pb";
+
+message ContractStopPlanOrder {
+  int64 id = 1;
+  string orderId = 2;
+  string symbol = 3;
+  optional string positionId = 4;
+  optional int32 lossTrend = 5;// 参考 QuotationEnums.proto Trend
+  optional int32 profitTrend = 6;// 参考 QuotationEnums.proto Trend
+  optional string stopLossPrice = 7; //止损价
+  optional string takeProfitPrice = 8; //止盈价
+  int32 state = 9; //状态 参考 QuotationEnums.proto TriggerOrderState
+  int32 triggerSide = 10; //触发方向，1:止盈，2:止损 参考 QuotationEnums.proto TriggerOrderState
+  int32 positionType = 11;//参考 QuotationEnums.proto PositionType
+  optional string vol = 12;
+  optional string realityVol = 13; //实际下单数量
+  optional string placeOrderId = 14;//实际下单订单id
+  optional int32 errorCode = 15;
+  optional int32 version = 16; // 默认-1
+  optional int32 isFinished = 17;
+  optional string profitLossVolType = 18; //止盈止损数量类型(SAME: 数量相同；SEPARATE：数量不同)
+  optional string takeProfitVol = 19; // 止盈数量 (profitLossVolType == SEPARATE时处理)
+  optional string stopLossVol = 20; // 止损数量 (profitLossVolType == SEPARATE时处理)
+  optional int64 createTime = 21;
+  optional int64 updateTime = 22;
+  optional int32 volType = 23; // 数量类型1、分批止盈止损2、仓位止盈止  参考 QuotationEnums.proto StopPlanOrderVolType
+  optional int32 takeProfitReverse = 24; // 止盈反手：1是2否 参考 QuotationEnums.proto StopPlanOrderReverseType
+  optional int32 stopLossReverse = 25; // 止损反手：1是2否 参考 QuotationEnums.proto StopPlanOrderReverseType
+  optional int32 closeTryTimes = 26; // 平仓重试次数
+  optional int32 reverseTryTimes = 27; // 反手重试次数
+  optional int32 reverseErrorCode = 28; // 反手开仓失败原因默认值0
+  optional int32 stopLossType = 29; // 止损类型 0-市价止损 1-限价止损
+  optional string stopLossOrderPrice = 30; // 限价止损 委托价格
+  optional int32 ensureStopLoss = 31;//确保止损 0 不开启 1 开启 默认不开启
+  optional string extraTakerFeeRate = 32;// 额外taker费率
+}
